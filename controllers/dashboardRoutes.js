@@ -1,26 +1,34 @@
 const sequelize = require('../config/connection');
-const { User, Post, Comment } = require('../models');
+const { User, Party, Meal, Comment } = require('../models');
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
-  Post.findAll({
+  Party.findAll({
     where: {
       user_id: req.session.user_id,
     },
-    attributes: ['id', 'post_title', 'content', 'date_created'],
+    attributes: ['id', 'party_name', 'party_location', 'party_date'],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'post_comment', 'post_id', 'user_id', 'date_created'],
+        attributes: ['id', 'party_comment', 'party_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username'],
+          attributes: ['first_name', 'last_name'],
+        },
+      },
+      {
+        model: Meal,
+        attributes: ['id', 'item_name', 'item_type', 'dietary', 'party_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['first_name', 'last_name'],
         },
       },
       {
         model: User,
-        attributes: ['username'],
+        attributes: ['first_name', 'last_name'],
       },
     ],
   })
@@ -38,29 +46,37 @@ router.get('/', withAuth, (req, res) => {
     });
 });
 router.get('/edit/:id', withAuth, (req, res) => {
-  Post.findOne({
+  Party.findOne({
     where: {
       id: req.params.id,
     },
-    attributes: ['id', 'content', 'post_title', 'date_created'],
+    attributes: ['id', 'Party_name', 'Party_location', 'Party_date'],
     include: [
       {
-        model: User,
-        attributes: ['username'],
-      },
-      {
         model: Comment,
-        attributes: ['id', 'post_comment', 'post_id', 'user_id', 'date_created'],
+        attributes: ['id', 'party_comment', 'party_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username'],
+          attributes: ['first_name', 'last_name'],
         },
+      },
+      {
+        model: Meal,
+        attributes: ['id', 'item_name', 'item_type', 'dietary', 'party_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['first_name', 'last_name'],
+        },
+      },
+      {
+        model: User,
+        attributes: ['first_name', 'last_name'],
       },
     ],
   })
     .then((dbPostData) => {
       if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+        res.status(404).json({ message: 'No Party found with this id' });
         return;
       }
 

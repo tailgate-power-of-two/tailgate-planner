@@ -11,7 +11,7 @@ Comment.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    post_comment: {
+    party_comment: {
       type: DataTypes.TEXT,
     },
     user_id: {
@@ -22,11 +22,11 @@ Comment.init(
         key: 'id',
       },
     },
-    event_id: {
+    party_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'event',
+        model: 'party',
         key: 'id',
       },
     },
