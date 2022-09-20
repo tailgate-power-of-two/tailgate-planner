@@ -1,14 +1,14 @@
 const router = require('express').Router();
-const { Project } = require('../../models');
+const { Party } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
-    const newProject = await Project.create({
+    const newProject = await Party.create({
       ...req.body,
       user_id: req.session.user_id,
     });
 
-    res.status(200).json(newProject);
+    res.status(200).json(newParty);
   } catch (err) {
     res.status(400).json(err);
   }

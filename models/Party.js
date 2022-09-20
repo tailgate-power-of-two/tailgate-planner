@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Event extends Model {}
+class Party extends Model {}
 
-Event.init(
+Party.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,15 +11,15 @@ Event.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    event_name: {
+    party_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    event_location: {
+    party_location: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    event_date: {
+    party_date: {
       type: DataTypes.DATE,
       allowNull: false,
     },
@@ -40,4 +40,4 @@ Event.init(
   }
 );
 
-module.exports = Event;
+module.exports = Party;
