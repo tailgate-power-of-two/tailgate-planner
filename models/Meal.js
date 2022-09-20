@@ -23,10 +23,10 @@ Meal.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    event_id: {
+    party_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'event',
+        model: 'Party',
         key: 'id',
       },
     },

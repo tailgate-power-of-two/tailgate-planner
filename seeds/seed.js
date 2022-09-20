@@ -1,8 +1,9 @@
 const sequelize = require('../config/connection');
-const { User, Post, Comment } = require('../models');
+const { User, Party, Comment, Meal} = require('../models');
 
 const userData = require('./userData.json');
-const postData = require('./postData.json');
+const partyData = require('./partyData.json');
+const mealData = require('./mealData.json');
 const commentData = require('./commentData.json');
 
 const seedDatabase = async () => {
@@ -13,11 +14,18 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  for (const post of postData) {
-    await Post.create({
-      ...post,
+  for (const party of partyData) {
+    await Party.create({
+      ...party,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
+  }
+
+  for (const meal of mealData) {
+    await Meal.create({
+      ...meal,
+      user_id: users[Math.floor(Math.random() * users.length)].id,
+    })
   }
 
   for (const comment of commentData) {

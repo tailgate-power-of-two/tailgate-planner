@@ -1,0 +1,17 @@
+[
+    {
+      "party_name": "Texans at Bears",
+      "party_location": "Chicago, Illinois",
+      "party_date": "09/25/22"
+    },
+    {
+      "party_name": "Bears at Giants",
+      "party_location": "East Rutherford, New Jersey",
+      "party_date": "10/02/22"
+    },
+    {
+      "party_name": "Bears at Vikings",
+      "party_location": "Minneapolis, Minnesota",
+      "party_date": "10/09/22"
+    }
+]

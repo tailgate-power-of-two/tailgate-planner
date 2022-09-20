@@ -1,9 +1,9 @@
 const User = require('./User');
-const Event = require('./Event');
+const Party = require('./Party');
 const Comment = require('./Comment');
 const Meal = require('./Meal');
 
-User.hasMany(Event, {
+User.hasMany(Party, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
 });
@@ -18,13 +18,13 @@ User.hasMany(Meal, {
   onDelete: 'CASCADE'
 });
 
-Event.belongsTo(User, {
+Party.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
 });
 
-Event.hasMany(Comment, {
-  foreignKey: 'event_id',
+Party.hasMany(Comment, {
+  foreignKey: 'Party_id',
   onDelete: 'CASCADE'
 });
 
@@ -33,8 +33,8 @@ Comment.belongsTo(User, {
   onDelete: 'CASCADE'
 });
 
-Comment.belongsTo(Event, {
-  foreignKey: 'event_id',
+Comment.belongsTo(Party, {
+  foreignKey: 'Party_id',
   onDelete: 'CASCADE'
 });
 
