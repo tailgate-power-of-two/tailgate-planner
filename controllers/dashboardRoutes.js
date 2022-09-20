@@ -3,48 +3,50 @@ const { User, Party, Meal, Comment } = require('../models');
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, (req, res) => {
+router.get('/', /*withAuth,*/ (req, res) => {
   Party.findAll({
-    where: {
-      user_id: req.session.user_id,
-    },
+    // where: {
+    //   user_id: 1,
+    // },
     attributes: ['id', 'party_name', 'party_location', 'party_date'],
     include: [
-      {
-        model: Comment,
-        attributes: ['id', 'party_comment', 'party_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['first_name', 'last_name'],
-        },
-      },
+      // {
+      //   model: Comment,
+      //   attributes: ['id', 'party_comment', 'party_id', 'user_id', 'created_at'],
+      //   include: {
+      //     model: User,
+      //     attributes: ['first_name', 'last_name'],
+      //   },
+      // },
       {
         model: Meal,
-        attributes: ['id', 'item_name', 'item_type', 'dietary', 'party_id', 'user_id', 'created_at'],
+        attributes: ['item_name', 'item_type', 'dietary',],
         include: {
           model: User,
           attributes: ['first_name', 'last_name'],
         },
       },
-      {
-        model: User,
-        attributes: ['first_name', 'last_name'],
-      },
+      // {
+      //   model: User,
+      //   attributes: ['first_name', 'last_name'],
+      // },
     ],
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
-      res.render('dashboard', {
-        posts,
-        logged_in: true,
-        username: req.session.username,
-      });
+      // res.render('dashboard', {
+      //   posts,
+      //   // logged_in: true,
+      //   // username: req.session.username,
+      // });
+      res.status(200).json(posts)
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
+
 router.get('/edit/:id', withAuth, (req, res) => {
   Party.findOne({
     where: {

@@ -43,5 +43,10 @@ Meal.belongsTo(User, {
   onDelete: 'CASCADE'
 });
 
+Party.hasMany(Meal, {
+  foreignKey: 'party_id',
+  onDelete: 'CASCADE'
+});
+
 
 module.exports = { User, Party, Comment, Meal };
