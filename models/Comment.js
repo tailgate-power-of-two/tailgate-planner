@@ -11,7 +11,7 @@ Comment.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    post_comment: {
+    party_comment: {
       type: DataTypes.TEXT,
     },
     user_id: {

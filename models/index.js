@@ -24,7 +24,7 @@ Party.belongsTo(User, {
 });
 
 Party.hasMany(Comment, {
-  foreignKey: 'Party_id',
+  foreignKey: 'party_id',
   onDelete: 'CASCADE'
 });
 
@@ -34,7 +34,7 @@ Comment.belongsTo(User, {
 });
 
 Comment.belongsTo(Party, {
-  foreignKey: 'Party_id',
+  foreignKey: 'party_id',
   onDelete: 'CASCADE'
 });
 
