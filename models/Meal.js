@@ -21,7 +21,6 @@ Meal.init(
     },
     dietary: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     party_id: {
       type: DataTypes.INTEGER,
@@ -43,7 +42,7 @@ Meal.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post',
+    modelName: 'meal',
   }
 );
 
