@@ -1,0 +1,18 @@
+[
+  {
+    "item_name": "Nachos",
+    "item_type": "Food",
+    "dietary": "Dairy",
+    "party_id": 1
+  },
+  {
+    "item_name": "Chicken Wings",
+    "item_type": "Food",
+    "party_id": 2
+  },
+  {
+    "item_name": "312 Summer Ale",
+    "item_type": "Beverage",
+    "party_id": 1
+  }
+]
