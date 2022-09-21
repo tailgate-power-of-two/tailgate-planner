@@ -1,14 +1,14 @@
 [
   {
-    "post_comment": "Yes, I'm a fan of this app.",
+    "party_comment": "Yes, I'm a fan of this app.",
     "party_id": 2
   },
   {
-    "post_comment": "I don't think this app will do good.",
+    "party_comment": "I don't think this app will do good.",
     "party_id": 1
   },
   {
-    "post_comment": "Blue is the color of gold.",
+    "party_comment": "Blue is the color of gold.",
     "party_id": 1
   }
 ]
