@@ -5,19 +5,16 @@ const withAuth = require('../utils/auth');
 
 router.get('/', /*withAuth,*/ (req, res) => {
   Party.findAll({
-    // where: {
-    //   user_id: 1,
-    // },
     attributes: ['id', 'party_name', 'party_location', 'party_date'],
     include: [
-      // {
-      //   model: Comment,
-      //   attributes: ['id', 'party_comment', 'party_id', 'user_id', 'created_at'],
-      //   include: {
-      //     model: User,
-      //     attributes: ['first_name', 'last_name'],
-      //   },
-      // },
+      {
+        model: Comment,
+        attributes: ['id', 'party_comment', 'party_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['first_name', 'last_name'],
+        },
+      },
       {
         model: Meal,
         attributes: ['item_name', 'item_type', 'dietary',],
@@ -26,10 +23,10 @@ router.get('/', /*withAuth,*/ (req, res) => {
           attributes: ['first_name', 'last_name'],
         },
       },
-      // {
-      //   model: User,
-      //   attributes: ['first_name', 'last_name'],
-      // },
+      {
+        model: User,
+        attributes: ['first_name', 'last_name'],
+      },
     ],
   })
     .then((dbPostData) => {
@@ -47,12 +44,9 @@ router.get('/', /*withAuth,*/ (req, res) => {
     });
 });
 
-router.get('/edit/:id', withAuth, (req, res) => {
-  Party.findOne({
-    where: {
-      id: req.params.id,
-    },
-    attributes: ['id', 'Party_name', 'Party_location', 'Party_date'],
+router.get('/:id',/* withAuth,*/ (req, res) => {
+  Party.findByPk(req.params.id, {
+    attributes: ['id', 'party_name', 'party_location', 'party_date'],
     include: [
       {
         model: Comment,
@@ -64,7 +58,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
       },
       {
         model: Meal,
-        attributes: ['id', 'item_name', 'item_type', 'dietary', 'party_id', 'user_id', 'created_at'],
+        attributes: ['item_name', 'item_type', 'dietary',],
         include: {
           model: User,
           attributes: ['first_name', 'last_name'],
@@ -77,18 +71,20 @@ router.get('/edit/:id', withAuth, (req, res) => {
     ],
   })
     .then((dbPostData) => {
-      if (!dbPostData) {
-        res.status(404).json({ message: 'No Party found with this id' });
-        return;
-      }
+      // if (!dbPostData) {
+      //   res.status(404).json({ message: 'No Party found with this id' });
+      //   return;
+      // }
 
       const post = dbPostData.get({ plain: true });
-      console.log('sending ' + req.session.username);
-      res.render('edit-post', {
-        post,
-        logged_in: true,
-        username: req.session.username,
-      });
+      // console.log('sending ' + req.session.username);
+      // res.render('edit-post', {
+      //   post,
+      //   // logged_in: true,
+      //   // username: req.session.username,
+      // });
+
+      res.status(200).json(post)
     })
     .catch((err) => {
       console.log(err);
