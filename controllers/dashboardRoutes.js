@@ -9,7 +9,7 @@ router.get('/', /*withAuth,*/ (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ['id', 'party_comment', 'party_id', 'user_id', 'created_at'],
+        attributes: ['id', 'party_comment', 'created_at'],
         include: {
           model: User,
           attributes: ['first_name', 'last_name'],
@@ -17,7 +17,7 @@ router.get('/', /*withAuth,*/ (req, res) => {
       },
       {
         model: Meal,
-        attributes: ['item_name', 'item_type', 'dietary',],
+        attributes: ['item_name', 'item_type', 'dietary'],
         include: {
           model: User,
           attributes: ['first_name', 'last_name'],
@@ -50,7 +50,7 @@ router.get('/:id',/* withAuth,*/ (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ['id', 'party_comment', 'party_id', 'user_id', 'created_at'],
+        attributes: ['id', 'party_comment', 'created_at'],
         include: {
           model: User,
           attributes: ['first_name', 'last_name'],
