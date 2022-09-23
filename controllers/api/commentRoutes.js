@@ -1,6 +1,31 @@
 const router = require('express').Router();
 const { Comment, User } = require('../../models');
 
+router.get('/party/:id', async (req, res) =>{
+    Comment.findAll({
+        where: {
+            party_id : req.params.id
+        },
+        attributes: ['party_comment'],
+        include: {
+          model: User,
+          attributes: ['first_name', 'last_name'],
+        },
+    })
+    .then((dbPostData) => {
+        if(dbPostData.length == 0){
+            res.status(404).json({message: 'No comments found for this party'})
+            return;
+        }
+        const comments = dbPostData.map((comment) => comment.get({ plain: true }));
+        res.status(200).json(comments)
+      })
+    .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+    });
+})
+
 router.post('/', async (req, res) => {
     try {
         const newComment = await Comment.create({
