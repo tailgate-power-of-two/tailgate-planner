@@ -1,6 +1,40 @@
 const router = require('express').Router();
-const { Party } = require('../../models');
+const { Party, Meal, User } = require('../../models');
 
+// see list of guest
+router.get('/guests/:id', (req, res) => {
+  Meal.findAll({
+      where: {
+          party_id : req.params.id
+      },
+      attributes: ['user_id'],
+      include: {
+        model: User,
+        attributes: ['first_name', 'last_name'],
+      },
+  })
+  .then((dbPostData) => {
+      if(dbPostData.length == 0){
+          res.status(404).json({message: 'No guests found for this party'})
+          return;
+      }
+      const allGuests = dbPostData.map((guest) => guest.get({ plain: true }));
+      // https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects
+      function getUniqueListBy(arr, key) {
+        return [...new Map(arr.map(item => [item[key], item])).values()]
+      }
+
+      const guests = getUniqueListBy(allGuests, 'user_id')
+
+      res.status(200).json(guests)
+    })
+  .catch((err) => {
+  console.log(err);
+  res.status(500).json(err);
+  });
+})
+
+// add party
 router.post('/', async (req, res) => {
   try {
     const newParty = await Party.create({
@@ -14,6 +48,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// update party info
 router.put('/:id', (req, res) => {
   Party.update(
     {
@@ -34,6 +69,7 @@ router.put('/:id', (req, res) => {
     .catch((err) => res.json(err));
 });
 
+// delete party info
 router.delete('/:id', async (req, res) => {
   try {
     const partyData = await Party.destroy({
