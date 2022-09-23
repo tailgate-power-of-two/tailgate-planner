@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 
 router.get('/', /*withAuth,*/ (req, res) => {
   Party.findAll({
-    attributes: ['id', 'party_name', 'party_location', 'party_date'],
+    attributes: ['id', 'party_name', 'party_location', 'party_date'], 
     include: [
       {
         model: Comment,
@@ -31,12 +31,13 @@ router.get('/', /*withAuth,*/ (req, res) => {
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
-      // res.render('dashboard', {
-      //   posts,
-      //   // logged_in: true,
-      //   // username: req.session.username,
-      // });
-      res.status(200).json(posts)
+      res.render('all-party', {
+        layout: 'userhome',
+        posts,
+        // logged_in: true,
+        username: "Tester",
+      });
+      // res.status(200).json(posts)
     })
     .catch((err) => {
       console.log(err);
@@ -84,7 +85,15 @@ router.get('/:id',/* withAuth,*/ (req, res) => {
       //   // username: req.session.username,
       // });
 
-      res.status(200).json(post)
+      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      res.render('single-party', {
+        layout: 'userhome',
+        posts,
+        // logged_in: true,
+        username: "Tester",
+      });
+
+      // res.status(200).json(post)
     })
     .catch((err) => {
       console.log(err);

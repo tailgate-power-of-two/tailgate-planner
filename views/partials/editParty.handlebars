@@ -1,0 +1,11 @@
+<div class="card-body">
+
+    <div class="card-header flex-row justify-space-between">
+      <div class="col-8">Party Name: <span style="color: var(--primary);">{{party_name}}</span></div>
+      <div class="col-8">Party Location: <span style="color: var(--primary);">{{party_location}}</span></div>
+      <div class="col-8">Party Date: <span style="color: var(--primary);">{{format_date party_date}}</span></div>
+      <div class="col-4">Hosted by <span style="color: var(--primary);">{{user.first_name}} {{getFirstLetter user.last_name}}.</span></div>
+        <a href="dashboard/{{id}}">View Event</a>
+    </div>  
+
+</div>
