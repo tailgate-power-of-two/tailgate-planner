@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Party, Meal } = require('../../models');
+const { User, Meal } = require('../../models');
 
 // all meals for one party
 router.get('/party/:id', (req, res) => {
@@ -79,7 +79,7 @@ router.get('/:id', (req, res) => {
         });
 })
 
-// post
+// add meal
 router.post('/', async (req, res)=> {
     try {
         const newMeal = await Meal.create({

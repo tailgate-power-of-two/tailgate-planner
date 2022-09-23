@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Comment, User } = require('../../models');
 
+// all comments for one party
 router.get('/party/:id', async (req, res) =>{
     Comment.findAll({
         where: {
@@ -26,11 +27,13 @@ router.get('/party/:id', async (req, res) =>{
     });
 })
 
+// add a comment
 router.post('/', async (req, res) => {
     try {
         const newComment = await Comment.create({
             ...req.body,
-            user_id: 1,
+            // set to 1 for testing change when live
+            user_id: 1,// req.session.user_id,
         })
 
         res.status(200).json(newComment)
@@ -39,6 +42,7 @@ router.post('/', async (req, res) => {
     }
 })
 
+// edit comment
 router.put('/:id', (req, res) => {
     Comment.update(
       {
@@ -48,7 +52,7 @@ router.put('/:id', (req, res) => {
         where: {
           id: req.params.id,
         //   add back later so only the person who created it can delete it
-        //   user_id: req.params.user_id,
+        //   user_id: req.session.user_id,
         },
       }
     )
