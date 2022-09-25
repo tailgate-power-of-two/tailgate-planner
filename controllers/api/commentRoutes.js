@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
         const newComment = await Comment.create({
             ...req.body,
             // set to 1 for testing change when live
-            user_id: 1,// req.session.user_id,
+            user_id: req.session.user_id,
         })
 
         res.status(200).json(newComment)

@@ -1,33 +1,89 @@
 <div class="">
   <div class="">
     <h2>
-      <a href="/party/{{party.id}}">
+      <a href="/dashboard/{{party.id}}">
         <div class="col-8">{{party.party_name}}</div>
       </a>
     </h2>
-    <div class="col-3">hosted by {{party.user.first_name}}.
-    </div>
+    <p class="col-3">hosted by {{party.user.first_name}} {{getFirstLetter party.user.last_name}}.
+    </p>
   </div>  
   <p class="card-body">
-   {{party.party_location}}
-   {{party.party_date}}
+    <u>Event Details</u> <br/ >
+    Location: {{party.party_location}} <br />
+    Date: {{format_date party.party_date}} @ {{format_time party.party_date}} <br />
+  </p>
+  <p class="card-body">
+    <u>Meals Registered: {{party.meals.length}}</u> <br />
+
+<!-- Button trigger modal -->
+<button type="button" class="button" data-toggle="modal" data-target="#exampleModal">
+  Add Food or Beverage
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Meal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         
+        <form class="card-body" id="new-meal-form">
+          <div>
+            <label class="form-label">Item Name:</label>
+            <input class="form-input" type="text" name="item-name" />
+          </div>
+          <div>
+            Item Type:<br />
+            <input type="radio" id="food" name="type" value="Food" class="required">
+            <label for="food">Food</label><br />
+            <input type="radio" id="beverage" name="type" value="Beverage">
+            <label for="beverage">Beverage</label><br />
+            <input type="radio" id="other" name="type" value="Other">
+            <label for="other">Other</label>
+          </div>
+          <div>
+            <label class="form-label">Notes:</label>
+            <input class="form-input" type="text" name="dietary" />
+          </div>
+
+          <input type="hidden" name="post-id" value="{{post.id}}"/>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+      </div>
+      {{!-- <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div> --}}
+    </div>
+  </div>
+</div>
+
+    {{> meals party.meals}}
+  </p>
+  <p class="card-body">
+    <u>Comments: </u> <br />
+    {{> comments party.comments}}
   </p>
 </div>
 <input type="hidden" name="party-id" value="{{party.id}}"/>
-{{#if loggedIn}}
-<div class="card">
+{{!-- {{#if loggedIn}} --}}
+<div class="">
   <div class="card-header"></div>
   <form class="card-body" id="new-comment-form">
     
-    <p class="form-label">Comment:</p>
+    <p class="form-label">Add Comment:</p>
     <textarea class="form-input" id="comment-body" name="comment-body"></textarea>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
-{{/if}}
+{{!-- {{/if}} --}}
 
-{{> comments party.comments}}
-
-{{#if loggedIn}}
-<script src="/js/comment.js"></script>
-{{/if}}
+{{!-- {{#if loggedIn}} --}}
+<script src="/js/single-party.js"></script>
+{{!-- {{/if}} --}}

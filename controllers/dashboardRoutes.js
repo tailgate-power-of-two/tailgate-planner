@@ -57,15 +57,40 @@ router.get('/new', /*withAuth,*/ (req, res) => {
 
 router.get('/:id', /*withAuth,*/ async (req, res) => {
   try {
-    const partyData = await Party.findByPk(req.params.id);
+    const partyData = await Party.findByPk(req.params.id, {
+      attributes: ['id', 'party_name', 'party_location', 'party_date'],
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'party_comment', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['first_name', 'last_name'],
+          },
+        },
+        {
+          model: Meal,
+          attributes: ['item_name', 'item_type', 'dietary',],
+          include: {
+            model: User,
+            attributes: ['first_name', 'last_name'],
+          },
+        },
+        {
+          model: User,
+          attributes: ['first_name', 'last_name'],
+        },
+      ],
+    });
 
     if (partyData) {
-      const post = partyData.get({ plain: true });
-      console.log(post);
+      const party = partyData.get({ plain: true });
+      console.log(party);
 
       res.render('single-party', {
         layout: 'userhome',
-        post,
+        party,
+        username: req.session.username,
       });
     } else {
       res.status(404).end();

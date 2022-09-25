@@ -59,7 +59,7 @@ p {
 }
 
 input {
-    width: 100%;
+    /* width: 100%; */
     border: 1px solid #ccc;
     background: #FFF;
     margin: 0 0 5px;
@@ -67,14 +67,20 @@ input {
 }
 
 .button {
+  font-size: 1.3rem;
   text-decoration: none;
-  margin: 0 5px;
-  padding: 10px;
+  padding: 6px 10px;
+  /* width: 100%; */
+  display: block;
+  margin: 5px 0;
+  color: white;
   border-radius: var(--border-radius);
+  /* color: var(--primary); */
   border: none;
   outline: none;
   background-color: var(--light-dark);
   box-shadow: 3px 3px var(--dark);
+  transform: translate(-1px, -1px);
 }
 
 .button:hover {
@@ -220,9 +226,9 @@ input {
 }
 
 .card-body2 {
-  padding: 3%;
-  color: var(--primary);
-  background-color: var(--dark);
+  padding: 1%;
+  color: var(--secondary);
+  background-color: var(--tertiary);
   font-size: 1rem;
   margin: 10px;
 }

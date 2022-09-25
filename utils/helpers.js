@@ -11,5 +11,6 @@ module.exports = {
   },
   getFirstLetter: (name) => {
     return name.match(/\b\w/g).join("");
-  }
+  },
+
 };
