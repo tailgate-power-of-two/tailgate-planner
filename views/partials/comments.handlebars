@@ -1,0 +1,5 @@
+  {{#each this}}
+    <p class="card-body2"> 
+    {{party_comment}} - {{user.first_name}} {{getFirstLetter user.last_name}}. on {{format_date created_at}}
+    </p>
+  {{/each}}
