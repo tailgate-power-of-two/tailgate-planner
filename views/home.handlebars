@@ -1,0 +1,13 @@
+  <header class="">
+    <p class="d-flex justify-content-center"><img class="hero" src="/images/tailgate_v2.png" alt="Tailgate Planner"></p>
+
+    <p class="d-flex justify-content-center">
+        {{#if loggedIn}}
+        <a class="button" href="/dashboard" id="dashboard-btn">VIEW EVENTS</a>
+        <a class="button" href="/" id="logout-btn">LOGOUT</a>    
+        {{else}}
+        <a class="button " href="/login" id="login-btn">LOGIN</a>
+        {{/if}}
+    </p>
+
+  </header>

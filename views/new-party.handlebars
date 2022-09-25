@@ -1,0 +1,26 @@
+<div class="login-card">
+  <h2 class="card-header">Create New Party</h2>
+  <form class="card-body" id="new-party-form">
+    {{!-- <input type="hidden" name="party-id" value="{{party.id}}"/> --}}
+    <div>
+      <label class="form-label">Party Name:</label>
+      <input class="form-input" type="text" name="party-name"/>
+    </div>
+    <div>
+      <label class="form-label">Location:</label>
+      <input class="form-input" type="text" name="party-location"/>
+    </div>
+    <div id="datetimepicker1" data-target-input="nearest">
+      <label class="form-label">Date:</label>
+      <input class="form-input" type="text" name="party-date"/>
+    </div>
+    {{!-- <div>
+      <label class="form-label">Description:</label>
+      <textarea class="form-textarea form-input" name="party-body" data-number="8"></textarea>
+    </div> --}}
+ 
+    <button class="btn btn-primary" type="submit">CREATE</button>
+  </form>
+</div>
+
+<script src="/js/new.js"></script>
