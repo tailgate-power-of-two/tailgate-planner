@@ -7,12 +7,18 @@
     </h2>
     <p class="col-3">hosted by {{party.user.first_name}} {{getFirstLetter party.user.last_name}}.
     </p>
+    {{!-- {{#if attending}}
+      <p><button type="button" class="button">Leave Event</button></p>
+      {{else}}
+      <p><button type="button" class="button">Attend Event</button></p>
+    {{/if}} --}}
   </div>  
   <p class="card-body">
     <u>Event Details</u> <br/ >
     Location: {{party.party_location}} <br />
     Date: {{format_date party.party_date}} @ {{format_time party.party_date}} <br />
   </p>
+
   <p class="card-body">
     <u>Meals Registered: {{party.meals.length}}</u> <br />
 
