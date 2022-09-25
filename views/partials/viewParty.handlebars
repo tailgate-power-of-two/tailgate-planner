@@ -1,11 +1,11 @@
 <div class="card">
   <div class="card-header  flex-row justify-space-between">
     <h2>
-      <a href="/post/{{post.id}}">
-        <div class="col-8">{{post.post_title}}</div>
+      <a href="/post/{{party.id}}">
+        <div class="col-8">{{party_name}}</div>
       </a>
     </h2>
-    <div class="col-3">hosted by {{post.user.username}}.
+    <div class="col-3">hosted by {{user.first_name}} {{getFirstLetter user.last_name}}.
     </div>
   </div>  
   <p class="card-body">

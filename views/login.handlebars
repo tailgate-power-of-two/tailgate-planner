@@ -1,26 +1,48 @@
-<div class="card">
+  <header class="">
+    <p class="d-flex justify-content-center"><img class="hero" src="/images/tailgate_v2.png" style="width: 50%" alt="Tailgate Planner"></p>
+  </header>
 
-  <h2 class="card-header">LOGIN</h2>
-
-  <form class="card-body login-form">
-
-    <div class="form-group">
-      <label class="form-label">Username:</label>
-      <input class="form-input" type="text" id="username-input-login" />
-    </div>
-
-    <div class="form-group">
-      <label class="form-label">Password:</label>
-      <input class="form-input" type="password" id="password-input-login" />
-    </div>
-
-    <div class="form-group">
-      <button class="btn btn-primary" type="submit">LOGIN</button>
-    </div>
-
-  </form>
-  <br>
-  <p style="text-align: center;"><a href="/signup" class="button">New User Sign Up</a></p>
-
+<div class="flex-row justify-space-between-md">
+  <div class="login-card">
+    <h2 class="card-header">Login</h2>
+    <form class="form login-form">
+      <div class="form-group">
+        <label for="email-login">Email:</label>
+        <input class="form-input" type="text" id="email-login" />
+      </div>
+      <div class="form-group">
+        <label for="password-login">Password:</label>
+        <input class="form-input" type="password" id="password-login" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">login</button>
+      </div>
+    </form>
+  </div>
+  <div class="login-card">
+    <h2 class="card-header">Signup</h2>
+    <form class="form signup-form">
+      <div class="form-group">
+        <label for="firstname-signup">First Name:</label>
+        <input class="form-input" type="text" id="firstname-signup" />
+      </div>
+      <div class="form-group">
+        <label for="lastname-signup">Last Name:</label>
+        <input class="form-input" type="text" id="lastname-signup" />
+      </div>
+      <div class="form-group">
+        <label for="email-signup">Email:</label>
+        <input class="form-input" type="text" id="email-signup" />
+      </div>
+      <div class="form-group">
+        <label for="password-signup">Password:</label>
+        <input class="form-input" type="password" id="password-signup" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">signup</button>
+      </div>
+    </form>
+  </div>
 </div>
+
 <script src="/js/login.js"></script>
