@@ -1,6 +1,9 @@
 module.exports = {
   format_time: (date) => {
-    return date.toLocaleTimeString();
+    return date.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute:'2-digit'
+    });
   },
   format_date: (date) => {
     // Using JavaScript Date methods, we get and format the month, date, and year
