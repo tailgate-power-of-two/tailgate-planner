@@ -36,6 +36,8 @@ router.get('/', /*withAuth,*/ async (req, res) => {
       // console.log(req.session.username + " Dashboard Function")
       // console.log(posts);
 
+      posts.sort((a, b) => a.party_date - b.party_date)
+
       res.render('all-party', {
         layout: 'userhome',
         posts,
