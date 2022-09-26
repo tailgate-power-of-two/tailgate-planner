@@ -35,4 +35,10 @@ module.exports = {
   ifEquals: (arg1, arg2, options) => {
     return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
   },
+  fullId: (var1, var2, var3) => {
+    if (var1 == var2) {
+      var escOutput = "<button type='button' class='button' id='delete-meal-btn' value=" + var3 + ">Delete</button>";
+      return escOutput;
+    } 
+  },   
 };
