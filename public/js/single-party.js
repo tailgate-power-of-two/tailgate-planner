@@ -176,8 +176,10 @@ for (const i of eBtns) {
       .then((data) =>{
         document.querySelector('input[name="edit-meal-id"]').setAttribute('value', i.value)
         document.querySelector('input[name="edit-item-name"]').setAttribute('value',data.item_name)
-        document.querySelector('input[name="edit-dietary"]').setAttribute('value',data.dietary)
-        console.log(data.item_type)
+        if(data.dietary){
+          document.querySelector('input[name="edit-dietary"]').setAttribute('value',data.dietary)
+        }
+          console.log(data.item_type)
         if(data.item_type == 'Food'){
           document.getElementById('edit-food').checked = true
         } else if (data.item_type == 'Beverage'){
