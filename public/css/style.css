@@ -74,7 +74,7 @@ input {
   padding: 6px 10px;
   /* width: 100%; */
   display: block;
-  margin: 5px 0;
+  margin: 5px;
   color: white;
   border-radius: var(--border-radius);
   /* color: var(--primary); */
@@ -281,7 +281,7 @@ input {
 .flex-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: start;
 }
 
 .flex-column {

@@ -37,7 +37,7 @@ module.exports = {
   },
   fullId: (var1, var2, var3) => {
     if (var1 == var2) {
-      var escOutput = "<button type='button' class='button' id='delete-meal-btn' value=" + var3 + ">Delete</button> <button type='button' class='button' id='edit-meal-btn' data-toggle='modal' data-target='#editModal' value=" + var3 + ">Edit</button>";
+      var escOutput = "<button type='button' class='button' id='edit-meal-btn' data-toggle='modal' data-target='#editModal' value=" + var3 + ">Edit</button> <button type='button' class='button' id='delete-meal-btn' value=" + var3 + ">Delete</button>";
       return escOutput;
     } 
   },   
