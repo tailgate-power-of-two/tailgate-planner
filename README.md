@@ -40,9 +40,10 @@ Our second project in the bootcamp, this time we are creating an application bac
 <br>
 
 ## Project Name: Tailgate Planner
-* Github Repo : https://github.com/tailgate-power-of-two/tailgate-planner
-* Wireframe : https://whimsical.com/project-2-P8R4BwNv2jFTGyHaWdkNZJ
-* [Presentation](https://docs.google.com/presentation/d/1inoMDdrnHkAAAT6nmM9achjA9i3IKe5-SdcWKq3O7E4/edit?usp=sharing)
+* Github: [Repo](https://github.com/tailgate-power-of-two/tailgate-planner)
+* Wireframe: [Whimsical](https://whimsical.com/project-2-P8R4BwNv2jFTGyHaWdkNZJ)
+* Presentation: [Presentation](https://docs.google.com/presentation/d/1inoMDdrnHkAAAT6nmM9achjA9i3IKe5-SdcWKq3O7E4/edit?usp=sharing)
+* Heroku: [Heroku Deployment](https://tailgate-planner-app.herokuapp.com/)
 
 <br>
 <br>
