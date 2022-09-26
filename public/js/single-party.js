@@ -67,13 +67,23 @@ const mealFormHandler = async (event) => {
   };
 }
 
+const deleteClickHandler = async () => {
+  await fetch(`/api/party/${party_id}`, {
+    method: 'DELETE'
+  });
 
+  document.location.replace("/dashboard");
+};
 
+document
+  .querySelector('#delete-btn')
+  .addEventListener('click', deleteClickHandler);
+
+document
+  .querySelector('#new-comment-form')
+  .addEventListener('submit', commentFormHandler);
 
 document
   .querySelector('#new-meal-form')
   .addEventListener('submit', mealFormHandler);
 
-document
-  .querySelector('#new-comment-form')
-  .addEventListener('submit', commentFormHandler);

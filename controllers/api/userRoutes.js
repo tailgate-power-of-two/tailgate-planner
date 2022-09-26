@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
       first_name: req.body.firstname,
       last_name: req.body.lastname,
       email_address: req.body.email,
-      password: req.body.password
+      password: req.body.password,
     });
 
     req.session.save(() => {

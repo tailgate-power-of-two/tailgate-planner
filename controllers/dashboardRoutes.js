@@ -68,20 +68,20 @@ router.get('/:id', /*withAuth,*/ async (req, res) => {
           attributes: ['id', 'party_comment', 'created_at'],
           include: {
             model: User,
-            attributes: ['first_name', 'last_name'],
+            attributes: ['id', 'first_name', 'last_name'],
           },
         },
         {
           model: Meal,
-          attributes: ['item_name', 'item_type', 'dietary',],
+          attributes: ['id', 'item_name', 'item_type', 'dietary',],
           include: {
             model: User,
-            attributes: ['first_name', 'last_name'],
+            attributes: ['id', 'first_name', 'last_name'],
           },
         },
         {
           model: User,
-          attributes: ['first_name', 'last_name'],
+          attributes: ['id', 'first_name', 'last_name'],
         },
       ],
     });
@@ -90,11 +90,16 @@ router.get('/:id', /*withAuth,*/ async (req, res) => {
       const party = partyData.get({ plain: true });
       console.log(party);
 
+      const userId = req.session.user_id;
+      console.log(userId)
+
       res.render('single-party', {
         layout: 'userhome',
         party,
         username: req.session.username,
         avi: req.session.avi,
+        user_id: req.session.user_id
+
       });
     } else {
       res.status(404).end();
@@ -103,61 +108,5 @@ router.get('/:id', /*withAuth,*/ async (req, res) => {
     res.redirect('login');
   }
 });
-
-// router.get('/:id', /* withAuth,*/ (req, res) => {
-//   Party.findByPk(req.params.id, {
-//     attributes: ['id', 'party_name', 'party_location', 'party_date'],
-//     include: [
-//       {
-//         model: Comment,
-//         attributes: ['id', 'party_comment', 'created_at'],
-//         include: {
-//           model: User,
-//           attributes: ['first_name', 'last_name'],
-//         },
-//       },
-//       {
-//         model: Meal,
-//         attributes: ['item_name', 'item_type', 'dietary',],
-//         include: {
-//           model: User,
-//           attributes: ['first_name', 'last_name'],
-//         },
-//       },
-//       {
-//         model: User,
-//         attributes: ['first_name', 'last_name'],
-//       },
-//     ],
-//   })
-//     .then((dbPostData) => {
-//       if (!dbPostData) {
-//         res.status(404).json({ message: 'No Party found with this id' });
-//         return;
-//       }
-
-//       const post = dbPostData.get({ plain: true });
-//       // console.log('sending ' + req.session.username);
-//       // res.render('edit-post', {
-//       //   post,
-//       //   // logged_in: true,
-//       //   // username: req.session.username,
-//       // });
-
-//       // const posts = dbPostData.map((post) => post.get({ plain: true }));
-//       res.render('single-party', {
-//         layout: 'userhome',
-//         post,
-//         // logged_in: true,
-//         username: req.session.username,
-//       });
-
-//       // res.status(200).json(post)
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
 
 module.exports = router;
