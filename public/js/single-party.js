@@ -1,4 +1,5 @@
 const party_id = document.querySelector('input[name="party-id"]').value;
+// const meal_id = document.querySelector('input[name="meal-id"]').value;
 
 const commentFormHandler = async (event) => {
   event.preventDefault();
@@ -67,7 +68,7 @@ const mealFormHandler = async (event) => {
   };
 }
 
-const deleteClickHandler = async () => {
+const deletePartyClickHandler = async () => {
   await fetch(`/api/party/${party_id}`, {
     method: 'DELETE'
   });
@@ -75,10 +76,26 @@ const deleteClickHandler = async () => {
   document.location.replace("/dashboard");
 };
 
-let del = document.querySelector('#delete-btn')
+// const deleteMealClickHandler = async () => {
+//   // await fetch(`/api/meals/this.id)`, {
+//   //   method: 'DELETE'
+//   // });
+//   // console.log(this.id)
+
+//   // document.location.reload();
+// };
+
+let delParty = document.querySelector('#delete-party-btn')
   
-if(del){
-  del.addEventListener('click', deleteClickHandler);
+if(delParty){
+  delParty.addEventListener('click', deletePartyClickHandler);
+}
+
+let btns = document.querySelectorAll('#delete-meal-btn')
+for (i of btns) {
+  i.addEventListener('click', function() {
+    console.log(i.value)
+  });
 }
 
 document

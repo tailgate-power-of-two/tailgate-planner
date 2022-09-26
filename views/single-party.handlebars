@@ -9,7 +9,7 @@
       {{party.user.first_name}} {{getFirstLetter party.user.last_name}}.
     </p>
     {{#ifEquals user_id party.user.id}}
-        <p><button type="button" class="button" id="delete-btn">Delete Event</button></p>
+        <button type="button" class="button" id="delete-party-btn">Delete Event</button>
     {{/ifEquals}}
 
   </div>  
@@ -56,7 +56,6 @@
             <label class="form-label">Notes:</label>
             <input class="form-input" type="text" name="dietary" />
           </div>
-          <input type="hidden" name="post-id" value="{{post.id}}"/>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
