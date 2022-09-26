@@ -5,13 +5,11 @@
         <div class="col-8">{{party.party_name}}</div>
       </a>
     </h2>
-    <p class="col-3">hosted by 
+    <p class="col-5">hosted by 
       {{party.user.first_name}} {{getFirstLetter party.user.last_name}}.
     </p>
     {{#ifEquals user_id party.user.id}}
-        <button type="button" class="button" id="delete-party-btn">Delete Event</button>
-        {{!-- <p><a href="/dashboard/edit"><button type="button" class="button" id="edit-btn">Edit Event</button></a></p> --}}
-        <p><button type="button" class="button" id="edit-btn">Edit Event</button></p>
+        <p class="flex-row"><button type="button" class="button" id="edit-btn">Edit Event</button><button type="button" class="button" id="delete-party-btn">Delete Event</button></p>
     {{/ifEquals}}
 
   </div>  

@@ -1,8 +1,8 @@
   {{#each this}}
-    <p class="card-body2"> 
+    <p class="card-body2 animate__animated animate__fadeIn"> 
     {{item_name}} - {{item_type}} <br />
       {{dietary}} <br />
     Attendee: {{user.first_name}} {{getFirstLetter user.last_name}}.
-    {{{fullId userId user.id id}}}
+    <span class="flex-row">{{{fullId userId user.id id}}}</span>
     </p>
   {{/each}}
