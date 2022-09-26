@@ -88,10 +88,13 @@ router.get('/:id', /*withAuth,*/ async (req, res) => {
 
     if (partyData) {
       const party = partyData.get({ plain: true });
-      console.log(party);
 
-      const userId = req.session.user_id;
-      console.log(userId)
+      function iterate(item){
+        item.userId = req.session.user_id;
+        console.log(item);
+      }
+
+      party.meals.forEach(iterate);
 
       res.render('single-party', {
         layout: 'userhome',
@@ -105,7 +108,7 @@ router.get('/:id', /*withAuth,*/ async (req, res) => {
       res.status(404).end();
     }
   } catch (err) {
-    res.redirect('login');
+    res.redirect('/');
   }
 });
 router.get('/edit/:id', /*withAuth,*/ async (req, res) => {

@@ -67,7 +67,7 @@ const mealFormHandler = async (event) => {
   };
 }
 
-const deleteClickHandler = async () => {
+const deletePartyClickHandler = async () => {
   if(!confirm('are you sure you want to delete this party?')){
     return
   }
@@ -83,12 +83,41 @@ const editClickHandler = () =>{
   document.location.replace(`/dashboard/edit/${party_id}`)
 }
 
-let del = document.querySelector('#delete-btn')
+const deleteMealClickHandler = async () => {
+  if(!confirm('are you sure you want to delete this meal?')){
+    return
+  }
+
+  await fetch(`/api/meals/${this.value}`, {
+    method: 'DELETE'
+  });
+
+  document.location.reload();
+};
+
+let del = document.querySelector('#delete-party-btn')
   
 if(del){
-  del.addEventListener('click', deleteClickHandler);
+  del.addEventListener('click', deletePartyClickHandler);
 }
 
+let btns = document.querySelectorAll('#delete-meal-btn')
+for (const i of btns) {
+  // i.addEventListener('click', deleteMealClickHandler);
+  i.addEventListener('click', function() {
+    // console.log(i.value)
+    if(!confirm('are you sure you want to delete this meal?')){
+      return
+    }
+  
+    fetch(`/api/meals/${i.value}`, {
+      method: 'DELETE'
+    });
+  
+    document.location.reload();
+  });
+}
+  
 let edit = document.querySelector('#edit-btn')
 
 if(edit){

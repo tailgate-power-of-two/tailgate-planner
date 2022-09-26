@@ -1,9 +1,8 @@
   {{#each this}}
     <p class="card-body2"> 
     {{item_name}} - {{item_type}} <br />
-    {{#if dietary}}
-      {{dietary}}
-    {{/if}} <br />
+      {{dietary}} <br />
     Attendee: {{user.first_name}} {{getFirstLetter user.last_name}}.
+    {{{fullId userId user.id id}}}
     </p>
   {{/each}}
