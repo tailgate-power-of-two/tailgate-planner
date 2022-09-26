@@ -1,29 +1,13 @@
 # tailgate-planner
 
-<div id="top"></div>
+<a href="https://tailgate-planner-app.herokuapp.com/" rel="tailgate planner">![logo](./public/images/tailgate_v2.png)</a>
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  
-  ![Title](./assets/images/*.jpg)
-
-  <h3 align="center"><a href="">Tailgate Planner</a></h3>
-
-  
-</div>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <br>
 
-<div align="center">
-
-![landing](./assets/images/*.jpg)
-
-LOREM IPSUM
-
-</div>
+Our second project in the bootcamp, this time we are creating an application backed by a MySQL database with A Sequelize ORM an
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -38,6 +22,8 @@ LOREM IPSUM
 * [Font Awesome v5.8.1](https://fontawesome.com/)
 * [JS](https://www.javascript.com/)
 * [JQuery v3.2.1](https://jquery.com/)
+* [Animate.css](https://animate.style/)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -53,10 +39,10 @@ LOREM IPSUM
 
 <br>
 
-## Project Name: The Scranton Gamer
+## Project Name: Tailgate Planner
 * Github Repo : https://github.com/tailgate-power-of-two/tailgate-planner
 * Wireframe : https://whimsical.com/project-2-P8R4BwNv2jFTGyHaWdkNZJ
-* Presentation : tbd
+* [Presentation](https://docs.google.com/presentation/d/1inoMDdrnHkAAAT6nmM9achjA9i3IKe5-SdcWKq3O7E4/edit?usp=sharing)
 
 <br>
 <br>
@@ -65,7 +51,10 @@ LOREM IPSUM
 
 <div align="center">
 
-TBD
+Do you attend tailgate parites?
+Are you a fan of organization?
+
+Well look no further, our Tailgate Planner App is just what you’re looking for!!
 
 </div>
 
@@ -83,10 +72,9 @@ TBD
 <br>
 
 ## Things to Consider (If time allows):
+<br>
 
-TBD
-
- <br>
+<br>
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -130,6 +118,8 @@ Project Link: [https://github.com/tailgate-power-of-two/tailgate-planner](https:
 ## Acknowledgments
 
 * [Font Awesome](https://fontawesome.com)
+* [DiceBear Avatars](https://avatars.dicebear.com/)
+* [flatpickr](https://flatpickr.js.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
