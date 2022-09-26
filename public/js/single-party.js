@@ -25,6 +25,48 @@ const commentFormHandler = async (event) => {
   };
 }
 
+const editMealFormHandler = async (event) => {
+  event.preventDefault();
+
+  const item_name = document.querySelector('input[name="edit-item-name"]').value;
+  let item_type = "";
+  // const item_type = document.querySelector('input[name="item_type"]').value;
+  const dietary = document.querySelector('input[name="edit-dietary"]').value;
+
+  if(document.querySelector('input[value="edit-Food"]').checked) {
+    item_type = "Food";
+    console.log(item_type);
+  } else if (document.querySelector('input[value="edit-Beverage"]').checked) {
+    item_type = "Beverage";
+    console.log(item_type);
+  } else if (document.querySelector('input[value="edit-Other"]').checked){
+    item_type = "Other";
+    console.log(item_type);
+  } else {
+    alert('Nothing checked');
+  }
+
+  let editMealId = document.querySelector('input[name="edit-meal-id"]').getAttribute('value')
+
+  if(item_name) {
+    const response = await fetch(`/api/meals/${editMealId}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        item_name,
+        item_type,
+        dietary
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      alert(response.statusText);
+    }
+  };
+}
 const mealFormHandler = async (event) => {
   event.preventDefault();
 
@@ -117,6 +159,40 @@ for (const i of btns) {
     document.location.reload();
   });
 }
+
+let eBtns = document.querySelectorAll('#edit-meal-btn')
+for (const i of eBtns) {
+  // i.addEventListener('click', deleteMealClickHandler);
+  i.addEventListener('click', function() {
+    // alert(i.value)
+  
+    fetch(`/api/meals/${i.value}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) =>{
+        document.querySelector('input[name="edit-meal-id"]').setAttribute('value', i.value)
+        document.querySelector('input[name="edit-item-name"]').setAttribute('value',data.item_name)
+        document.querySelector('input[name="edit-dietary"]').setAttribute('value',data.dietary)
+        console.log(data.item_type)
+        if(data.item_type == 'Food'){
+          document.getElementById('edit-food').checked = true
+        } else if (data.item_type == 'Beverage'){
+          document.getElementById('edit-beverage').checked = true
+        } else{
+          document.getElementById('edit-other').checked = true
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  
+    
+  });
+}
   
 let edit = document.querySelector('#edit-btn')
 
@@ -131,4 +207,8 @@ document
 document
   .querySelector('#new-meal-form')
   .addEventListener('submit', mealFormHandler);
+
+document
+  .querySelector('#edit-meal-form')
+  .addEventListener('submit',editMealFormHandler)
 
