@@ -157,6 +157,7 @@ for (const i of btns) {
     });
   
     document.location.reload();
+    document.location.reload();
   });
 }
 
