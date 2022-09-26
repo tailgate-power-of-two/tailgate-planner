@@ -116,9 +116,7 @@ router.put('/:id', (req, res) => {
       {
         item_name: req.body.item_name,
         item_type: req.body.item_type,
-        dietary: req.body.dietary,
-        party_id: req.body.party_id,
-        user_id: req.body.user_id,
+        dietary: req.body.dietary
       },
       { 
         where: {
