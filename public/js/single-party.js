@@ -75,9 +75,11 @@ const deleteClickHandler = async () => {
   document.location.replace("/dashboard");
 };
 
-document
-  .querySelector('#delete-btn')
-  .addEventListener('click', deleteClickHandler);
+let del = document.querySelector('#delete-btn')
+  
+if(del){
+  del.addEventListener('click', deleteClickHandler);
+}
 
 document
   .querySelector('#new-comment-form')
