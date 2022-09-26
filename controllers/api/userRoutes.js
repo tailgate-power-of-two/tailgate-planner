@@ -1,6 +1,10 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+let avatar = 'https://avatars.dicebear.com/api/initials/first.last.svg'
+let first = 'first'
+let last = 'last'
+
 // Sign Up
 router.post('/', async (req, res) => {
   try {
@@ -14,6 +18,11 @@ router.post('/', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.username = userData.first_name;
+      avatar = avatar.replace(first, userData.first_name);
+      avatar = avatar.replace(last, userData.last_name);
+      req.session.avi = avatar;
+      first = userData.first_name;
+      last = userData.last_name;
       req.session.logged_in = true;
 
       res.status(200).json(userData);
@@ -47,6 +56,11 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.username = userData.first_name;
+      avatar = avatar.replace(first, userData.first_name);
+      avatar = avatar.replace(last, userData.last_name);
+      req.session.avi = avatar;
+      first = userData.first_name;
+      last = userData.last_name;
       req.session.logged_in = true;
 
       console.log(`\n*****Login Successful!*****\n`);

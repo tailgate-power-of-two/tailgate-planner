@@ -3,6 +3,7 @@ const { User, Party, Meal, Comment } = require('../models');
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
 
+
 router.get('/', /*withAuth,*/ async (req, res) => {
   try {
     const partyData = await Party.findAll({
@@ -39,6 +40,7 @@ router.get('/', /*withAuth,*/ async (req, res) => {
         layout: 'userhome',
         posts,
         username: req.session.username,
+        avi: req.session.avi, 
       });
       // res.status(200).json(posts)
     } catch (err) {
@@ -52,6 +54,7 @@ router.get('/new', /*withAuth,*/ (req, res) => {
   res.render('new-party', {
     layout: 'userhome',
     username: req.session.username,
+    avi: req.session.avi, 
   });
 });
 
@@ -91,6 +94,7 @@ router.get('/:id', /*withAuth,*/ async (req, res) => {
         layout: 'userhome',
         party,
         username: req.session.username,
+        avi: req.session.avi,
       });
     } else {
       res.status(404).end();
