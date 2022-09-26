@@ -1,22 +1,21 @@
 <div class="card">
   <h2 class="card-header">Edit Party</h2>
-  <form class="card-body" id="edit-post-form">
+  <form class="card-body" id="edit-party-form">
+  <input type="hidden" name="party-id" value="{{party_id}}"/>
     <div>
       <label class="form-label">Party Name:</label>
-      <input class="form-input" type="text" name="post-title" value="{{party.party_name}}"/>
+      <input class="form-input" type="text" name="party-name" value="{{party_name}}"/>
     </div>
     <div>
       <label class="form-label">Party Location:</label>
-      <input class="form-input" type="text" name="post-title" value="{{party.party_location}}"/>
+      <input class="form-input" type="text" name="party-location" value="{{party_location}}"/>
     </div>
-    <div>
-      <label class="form-label">Party Date:</label>
-      <input class="form-input" type="text" name="post-title" value="{{party.party_date}}"/>
+    <div id="datetimepicker1" data-target-input="nearest">
+      <label class="form-label">Date & Time:</label>
+      <input class="form-input" id="basicDate" type="text" name="party-date" value="{{format_date party_date}} {{format_time party_date}}"/>
     </div>
  
     <button class="button" type="submit">UPDATE POST</button>
-    <button class="button" type="click" id="delete-btn">DELETE</button>
-    <input type="hidden" name="post-id" value="{{post.id}}"/>
   </form>
 </div>
-<script src="/js/edit.js"></script>
+<script src="/js/edit-party.js" type="module"></script>

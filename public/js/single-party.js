@@ -68,6 +68,10 @@ const mealFormHandler = async (event) => {
 }
 
 const deleteClickHandler = async () => {
+  if(!confirm('are you sure you want to delete this party?')){
+    return
+  }
+
   await fetch(`/api/party/${party_id}`, {
     method: 'DELETE'
   });
@@ -75,10 +79,20 @@ const deleteClickHandler = async () => {
   document.location.replace("/dashboard");
 };
 
+const editClickHandler = () =>{
+  document.location.replace(`/dashboard/edit/${party_id}`)
+}
+
 let del = document.querySelector('#delete-btn')
   
 if(del){
   del.addEventListener('click', deleteClickHandler);
+}
+
+let edit = document.querySelector('#edit-btn')
+
+if(edit){
+  edit.addEventListener('click',editClickHandler)
 }
 
 document
