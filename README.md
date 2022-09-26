@@ -7,7 +7,7 @@
 ## About The Project
 <br>
 
-Our second project in the bootcamp, this time we are creating an application backed by a MySQL database with A Sequelize ORM an
+Our second project in the bootcamp, this time we are creating an application backed by a MySQL database with A Sequelize ORM. We created an app to organize a Tailgate party, you can create an event, attend by adding a meal, and leave comments for the host and guests alike. Click on the logo above to see the website.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -71,7 +71,7 @@ Well look no further, our Tailgate Planner App is just what you’re looking for
 
 <br>
 
-## Things to Consider (If time allows):
+## Future Development:
 <br>
 
 <br>
@@ -79,9 +79,24 @@ Well look no further, our Tailgate Planner App is just what you’re looking for
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+Login Screen
+![login](./public/images/loginScreen.png)
 
+Dashboard
+![dashboard](./public/images/dashboard.png)
 
-<!-- _For more examples, please refer to the [Documentation](https://example.com)_ -->
+Single Event
+![singleEvent](./public/images/singleEvent.png)
+
+Add Meal
+![addMeal](./public/images/addMeal.png)
+
+Edit Party
+![editParty](./public/images/editEvent.png)
+
+Updated Event
+![changedEvent](./public/images/changedEvent.png)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -92,8 +107,8 @@ Well look no further, our Tailgate Planner App is just what you’re looking for
 
 - [x] Initialize readme
 - [x] Add Working Agreement
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
+- [x] Create backend with seed data
+- [x] Implement handlebars to easily access data
 
 
 See the [open issues](https://github.com/tailgate-power-of-two/tailgate-planner/issues) for a full list of proposed features (and known issues).
