@@ -145,7 +145,14 @@ input {
   color: var(--tertiary);
 }
 
+.site-logo {
+  width: 25%;
+  padding: 1rem;
+}
+
 .hero {
+  margin-top: 0;
+  padding-top: 0;
   padding: 3% 4%;
   background-color: var(--dark);
   color: var(--primary);
