@@ -108,5 +108,37 @@ router.get('/:id', /*withAuth,*/ async (req, res) => {
     res.redirect('login');
   }
 });
+router.get('/edit/:id', /*withAuth,*/ async (req, res) => {
+  try {
+    const partyData = await Party.findByPk(req.params.id, {
+      attributes: ['id', 'party_name', 'party_location', 'party_date'],
+    });
+
+    if (partyData) {
+      const party = partyData.get({ plain: true });
+      console.log(party);
+
+      const userId = req.session.user_id;
+      console.log(userId)
+
+      res.render('edit-party', {
+        layout: 'userhome',
+        party,
+        username: req.session.username,
+        avi: req.session.avi,
+        user_id: req.session.user_id,
+        party_id: partyData.id,
+        party_name: partyData.party_name,
+        party_location: partyData.party_location,
+        party_date: partyData.party_date
+        
+      });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.redirect('login');
+  }
+});
 
 module.exports = router;

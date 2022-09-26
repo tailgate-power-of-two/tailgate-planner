@@ -54,8 +54,7 @@ router.put('/:id', (req, res) => {
     {
       party_name: req.body.party_name,
       party_location: req.body.party_location,
-      party_date: req.body.party_date,
-      user_id: req.body.user_id,
+      party_date: req.body.party_date
     },
     { 
       where: {
