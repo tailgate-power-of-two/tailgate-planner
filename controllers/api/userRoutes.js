@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-let avatar = 'https://avatars.dicebear.com/api/initials/first.last.svg'
+let avatar = 'https://avatars.dicebear.com/api/gridy/first.last.svg'
 let first = 'first'
 let last = 'last'
 
