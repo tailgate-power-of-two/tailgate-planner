@@ -66,6 +66,8 @@ input {
     padding: 10px;
 }
 
+
+
 .button {
   font-size: 1.3rem;
   text-decoration: none;
@@ -153,7 +155,7 @@ input {
 .hero {
   margin-top: 0;
   padding-top: 0;
-  padding: 3% 4%;
+  padding: 1%;
   background-color: var(--dark);
   color: var(--primary);
 }
