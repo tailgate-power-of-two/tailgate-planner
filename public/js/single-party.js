@@ -69,9 +69,9 @@ const mealFormHandler = async (event) => {
 }
 
 const deletePartyClickHandler = async () => {
-  await fetch(`/api/party/${party_id}`, {
-    method: 'DELETE'
-  });
+  // await fetch(`/api/party/${party_id}`, {
+  //   method: 'DELETE'
+  // });
 
   document.location.replace("/dashboard");
 };
@@ -94,7 +94,8 @@ if(delParty){
 let btns = document.querySelectorAll('#delete-meal-btn')
 for (i of btns) {
   i.addEventListener('click', function() {
-    console.log(i.value)
+    alert("I am a button with value " + $(this).attr('value'));
+    // console.log(i.value)
   });
 }
 

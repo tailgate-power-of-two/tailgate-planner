@@ -4,9 +4,11 @@
     {{item_name}} - {{item_type}}<br />
       {{dietary}}<br />
     Attendee: {{user.first_name}} {{getFirstLetter user.last_name}}.
-    <input type="hidden" name="meal-id" value={{id}}>
+    {{!-- <input type="button" class="button" name="meal-id" value={{id}}> 
     {{#ifEquals userId user.id}}
-      <button type="button" class="button" id="delete-meal-btn" value={{id}}>Delete Meal</button>
-    {{/ifEquals}}
+      <input type="button" class="button" name="meal-id" value="{{id}}"> Text
+    {{/ifEquals}} --}}
+    {{{fullId userId user.id id}}}
+
     </p>
   {{/each}}
