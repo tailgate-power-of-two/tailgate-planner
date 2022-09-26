@@ -65,15 +65,15 @@ router.get('/:id', /*withAuth,*/ async (req, res) => {
           attributes: ['id', 'party_comment', 'created_at'],
           include: {
             model: User,
-            attributes: ['first_name', 'last_name'],
+            attributes: ['id', 'first_name', 'last_name'],
           },
         },
         {
           model: Meal,
-          attributes: ['item_name', 'item_type', 'dietary',],
+          attributes: ['id', 'item_name', 'item_type', 'dietary',],
           include: {
             model: User,
-            attributes: ['first_name', 'last_name'],
+            attributes: ['id', 'first_name', 'last_name'],
           },
         },
         {
@@ -87,10 +87,21 @@ router.get('/:id', /*withAuth,*/ async (req, res) => {
       const party = partyData.get({ plain: true });
       console.log(party);
 
-      res.render('single-party', {
+      const userId = req.session.user_id;
+      console.log(userId)
+
+      function iterate(item){
+        item.userId = req.session.user_id;
+        console.log(item);
+      }
+
+      party.meals.forEach(iterate);
+
+       res.render('single-party', {
         layout: 'userhome',
         party,
         username: req.session.username,
+        user_id: req.session.user_id
       });
     } else {
       res.status(404).end();

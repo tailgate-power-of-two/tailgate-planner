@@ -67,8 +67,21 @@ const mealFormHandler = async (event) => {
   };
 }
 
+const deleteClickHandler = async () => {
+  await fetch(`/api/meal/${id}`, {
+    method: 'DELETE'
+  });
 
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    alert(response.statusText);
+  }
+};
 
+document
+.querySelector('#delete-btn')
+.addEventListener('click', deleteClickHandler);
 
 document
   .querySelector('#new-meal-form')
@@ -77,3 +90,5 @@ document
 document
   .querySelector('#new-comment-form')
   .addEventListener('submit', commentFormHandler);
+
+

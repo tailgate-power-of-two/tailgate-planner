@@ -1,9 +1,11 @@
   {{#each this}}
+    +{{id}}+
     <p class="card-body2"> 
     {{item_name}} - {{item_type}} <br />
-    {{#if dietary}}
-      {{dietary}}
-    {{/if}} <br />
-    Attendee: {{user.first_name}} {{getFirstLetter user.last_name}}.
+      {{dietary}}<br />
+    Attendee: #{{user.id}} - {{user.first_name}} {{getFirstLetter user.last_name}}.
+    {{#when user.id 'eq' userId}}  
+      <button type="click" class="button delete-btn">Delete</button>
+    {{/when}}
     </p>
   {{/each}}
